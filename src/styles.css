@@ -1,0 +1,49 @@
+
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #dfebed;
+}
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.4s, background-color 0.4s, border-color 0.4s;
+}
+
+.btn::after {
+  content: "";
+  background: #fff;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s;
+}
+
+.btn:active::after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
+
+.btn:hover {
+  color: #007bff;
+  background-color: white;
+  border: 1px solid #007bff;
+}
+
+.btn-primary:hover::after {
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}

@@ -1,0 +1,75 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Crear nueva oferta</h2>
+    </div>
+    <!-- Formulario reactivo vinculado al FormGroup newOfferForm -->
+    <form [formGroup]="newOfferForm" (ngSubmit)="submitOffer()">
+      <div class="card-body">
+        <!-- Grupo de formulario para el título -->
+        <div class="form-group">
+          <label for="titulo">Título</label>
+          <input formControlName="titulo" type="text" id="titulo" class="form-control" required>
+          <!-- Mensajes de error para la validación del título -->
+          <div *ngIf="newOfferForm.get('titulo')?.touched && newOfferForm.get('titulo')?.errors">
+            <small class="text-danger" *ngIf="newOfferForm.get('titulo')?.errors?.['required']">El título es obligatorio.</small>
+            <small class="text-danger" *ngIf="newOfferForm.get('titulo')?.errors?.['maxlength']">El título no puede exceder los 100 caracteres.</small>
+          </div>
+        </div>
+        <!-- Grupo de formulario para el nombre de la empresa -->
+        <div class="form-group">
+          <label for="empresa">Empresa</label>
+          <input formControlName="empresa" type="text" id="empresa" class="form-control" required>
+          <!-- Mensajes de error para la validación del nombre de la empresa -->
+          <div *ngIf="newOfferForm.get('empresa')?.touched && newOfferForm.get('empresa')?.errors">
+            <small class="text-danger" *ngIf="newOfferForm.get('empresa')?.errors?.['required']">El nombre de la empresa es obligatorio.</small>
+            <small class="text-danger" *ngIf="newOfferForm.get('empresa')?.errors?.['maxlength']">El nombre de la empresa no puede exceder los 50 caracteres.</small>
+          </div>
+        </div>
+        <!-- Grupo de formulario para el salario -->
+        <div class="form-group">
+          <label for="salario">Salario</label>
+          <input formControlName="salario" type="number" id="salario" class="form-control" required>
+        </div>
+        <!-- Grupo de formulario para la ciudad -->
+        <div class="form-group">
+          <label for="ciudad">Ciudad</label>
+          <input formControlName="ciudad" type="text" id="ciudad" class="form-control" required>
+          <!-- Mensajes de error para la validación de la ciudad -->
+          <div *ngIf="newOfferForm.get('ciudad')?.touched && newOfferForm.get('ciudad')?.errors">
+            <small class="text-danger" *ngIf="newOfferForm.get('ciudad')?.errors?.['required']">El nombre de la ciudad es obligatorio.</small>
+            <small class="text-danger" *ngIf="newOfferForm.get('ciudad')?.errors?.['maxlength']">El nombre de la ciudad no puede exceder los 50 caracteres.</small>
+          </div>
+        </div>
+        <!-- Grupo de formulario para el email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input formControlName="email" type="email" id="email" class="form-control" required>
+          <!-- Mensajes de error para la validación del email -->
+          <div *ngIf="newOfferForm.get('email')?.touched && newOfferForm.get('email')?.errors">
+            <small class="text-danger" *ngIf="newOfferForm.get('email')?.errors?.['required']">El email es obligatorio.</small>
+            <small class="text-danger" *ngIf="newOfferForm.get('email')?.errors?.['maxlength']">El email no puede exceder los 50 caracteres.</small>
+            <small class="text-danger" *ngIf="newOfferForm.get('email')?.errors?.['email']">El email no cumple las condiciones necesarias.</small>
+          </div>
+        </div>
+        <!-- Grupo de formulario para la descripción -->
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <textarea formControlName="descripcion" id="descripcion" class="form-control" required></textarea>
+          <!-- Mensajes de error para la validación de la descripción -->
+          <div *ngIf="newOfferForm.get('descripcion')?.touched && newOfferForm.get('descripcion')?.errors">
+            <small class="text-danger" *ngIf="newOfferForm.get('descripcion')?.errors?.['required']">La descripción es obligatoria.</small>
+            <small class="text-danger" *ngIf="newOfferForm.get('descripcion')?.errors?.['maxlength']">La descripción no puede exceder los 300 caracteres.</small>
+          </div>
+        </div>
+        <!-- Mensajes de error si faltan datos -->
+        <p class="data-error" *ngIf="dataError">Faltan datos.</p>
+      </div>
+      <div class="card-footer text-muted  d-flex justify-content-center">
+        <!-- Botón de creación de oferta si se cumplen todas las condiciones -->
+        <button type="submit" class="btn btn-primary" [disabled]="!newOfferForm.valid">Crear oferta</button>
+        <button type="button" class="btn btn-outline-secondary btn-separation" (click)="goBack()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

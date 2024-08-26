@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <!-- La tarjeta solo se muestra si hay una oferta de trabajo para mostrar -->
+  <div class="card" *ngIf="jobOffer">
+    <!-- Encabezado de la tarjeta con el título y subtítulo de la oferta de trabajo -->
+    <div class="card-header">
+      <h2 class="card-title">{{ jobOffer.titulo }}</h2>
+      <h6 class="card-subtitle mb-2 text-muted">{{ jobOffer.empresa }}</h6>
+    </div>
+    <!-- Cuerpo de la tarjeta con la descripción de la oferta de trabajo -->
+    <div class="card-body">
+      <h5 class="card-title">Descripción de la oferta</h5>
+      <p class="card-text">{{ jobOffer.descripcion }}</p>
+      <!-- Sección con detalles adicionales de la oferta de trabajo -->
+      <h5 class="card-title">Detalles</h5>
+      <ul class="list-group list-group-flush">
+        <!-- Se lista cada detalle importante de la oferta de trabajo -->
+        <li class="list-group-item"><strong>Empresa:</strong> {{ jobOffer.empresa }}</li>
+        <li class="list-group-item"><strong>Salario:</strong> {{ jobOffer.salario | currency:'EUR':'symbol' }}</li>
+        <li class="list-group-item"><strong>Ciudad:</strong> {{ jobOffer.ciudad }}</li>
+        <li class="list-group-item"><strong>Email de contacto:</strong> {{ jobOffer.email }}</li>
+      </ul>
+    </div>
+    <!-- Pie de página de la tarjeta con un botón para volver a la vista anterior -->
+    <div class="card-footer text-muted">
+      <button class="btn btn-outline-secondary" (click)="goBack()">Volver</button>
+    </div>
+  </div>
+</div>

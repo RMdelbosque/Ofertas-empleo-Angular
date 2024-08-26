@@ -1,0 +1,10 @@
+.data-error, text-danger{
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
+.btn-separation {
+  margin-left: 10px;
+}
+
+

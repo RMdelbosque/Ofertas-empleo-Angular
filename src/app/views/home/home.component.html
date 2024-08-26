@@ -1,0 +1,35 @@
+<div class="header-wrapper">
+  <h2 class="page-title">Ofertas de trabajo</h2>
+</div>
+<div class="offer-cards-container">
+  <!-- Tarjeta para añadir nuevas ofertas, visible solo si el usuario está logueado -->
+  <div *ngIf="userIsLogged" class="card add-new-card">
+    <div class="card-header">
+      <h5 class="card-title">Añadir nueva oferta</h5>
+    </div>
+    <div class="card-body d-flex justify-content-center align-items-center">
+      <button class="btn btn-success btn-circle btn-xl" (click)="addNewOffer()">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+    <div class="card-footer d-flex justify-content-center">
+    </div>
+  </div>
+  <!-- Iteración para cada oferta de trabajo dentro de la lista de ofertas -->
+  <div class="card" *ngFor="let offer of offerLists">
+    <div class="card-header">
+      <h5 class="card-title">{{ offer.titulo }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ offer.empresa }}</h6>
+    </div>
+    <div class="card-body">
+      <div class="card-details">
+        <div><strong>Ciudad: </strong> <span class="city">{{ offer.ciudad }}</span></div>
+        <div><strong>Salario: </strong> <span class="salary">{{ offer.salario | currency:'EUR':'symbol'  }}</span></div>
+      </div>
+    </div>
+    <div class="card-footer d-flex justify-content-center">
+      <button class="btn btn-primary" (click)="seeOfferDetails(offer.id)">Detalles</button>
+      <button *ngIf="userIsLogged" class="btn btn-primary delete-button btn-separation" (click)="deleteOffer(offer.id)">Eliminar</button>
+    </div>
+  </div>
+</div>

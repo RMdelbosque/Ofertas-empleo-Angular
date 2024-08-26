@@ -1,0 +1,41 @@
+<!-- header.component.html -->
+<!-- Barra de navegación principal -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <!-- Enlace para volver al inicio de la aplicación -->
+    <a class="navbar-brand btn" routerLink="/">Home</a>
+
+    <!-- Botón para dispositivos móviles que muestra y oculta el menú de navegación -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Botones de inicio de sesión y cierre de sesión -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <!-- Botón de inicio de sesión visible solo cuando el usuario no está logueado -->
+          <button *ngIf="!userIsLogged" class="btn btn-primary login-button" (click)="goToLoginPage()">Login</button>
+          <!-- Botón de cierre de sesión visible solo cuando el usuario está logueado -->
+          <button *ngIf="userIsLogged" class="btn btn-primary logout-button" (click)="logout()">Log out</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Sección de alertas para notificar al usuario sobre diferentes acciones o estados -->
+<div>
+  <!-- Alerta de éxito, se muestra cuando alertService.showAlertSuccess es verdadero -->
+  <div *ngIf="alertService.showAlertSuccess" class="alert alert-success" role="alert">
+    {{ alertService.alertMessage }}
+  </div>
+  <!-- Alerta de advertencia, se muestra cuando alertService.showAlertWarning es verdadero -->
+  <div *ngIf="alertService.showAlertWarning" class="alert alert-warning" role="alert">
+    {{ alertService.alertMessage }}
+  </div>
+  <!-- Alerta de peligro, se muestra cuando alertService.showAlertDanger es verdadero -->
+  <div *ngIf="alertService.showAlertDanger" class="alert alert-danger" role="alert">
+    {{ alertService.alertMessage }}
+  </div>
+</div>
